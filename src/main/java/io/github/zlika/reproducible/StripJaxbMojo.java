@@ -81,7 +81,7 @@ public final class StripJaxbMojo extends AbstractMojo
      * Default value is : "JavaTM Architecture for XML Binding" which is the
      * text written by the Glassfish implementation of xjc generator.
      *
-     * If provided, overwrites a given xjcImplementation configuration property.
+     * If provided, overwrites a given xjcGenerator configuration property.
      */
     @Parameter(defaultValue = "", property = "reproducible.relyingCommentText")
     private String relyingCommentText;
@@ -113,7 +113,7 @@ public final class StripJaxbMojo extends AbstractMojo
             return;
         }
         final Charset charset = Charset.forName(encoding);
-        final JaxbObjectFactoryFixer objectFactoryFixer = new JaxbObjectFactoryFixer(getMatchingSentence(), charset);
+        final JaxbObjectFactoryFixer objectFactoryFixer = new JaxbObjectFactoryFixer(getRelyingCommentText(), charset);
         final LineNumberStripper jaxbFileDateStripper = new LineNumberStripper(JAXB_FILE_TIMESTAMP_LINE_NUMBER);
         final LineNumberStripper jaxbEpisodeDateStripper = new LineNumberStripper(JAXB_EPISODE_TIMESTAMP_LINE_NUMBER);
         final File tmpFile = createTempFile();
@@ -171,7 +171,7 @@ public final class StripJaxbMojo extends AbstractMojo
         return lines.size() > JAXB_FILE_TIMESTAMP_LINE_NUMBER
                 && lines.get(0).equals("//")
                 && lines.get(JAXB_FILE_JAXB_COMMENT_LINE_NUMBER)
-                    .contains(getMatchingSentence())
+                    .contains(getRelyingCommentText())
                     && lines.get(JAXB_FILE_TIMESTAMP_LINE_NUMBER).contains(":");
     }
     
@@ -180,7 +180,7 @@ public final class StripJaxbMojo extends AbstractMojo
         return filename.endsWith(".episode")
                 && lines.size() > JAXB_EPISODE_TIMESTAMP_LINE_NUMBER
                 && lines.get(JAXB_EPISODE_JAXB_COMMENT_LINE_NUMBER)
-                    .contains(getMatchingSentence())
+                    .contains(getRelyingCommentText())
                 && lines.get(JAXB_EPISODE_TIMESTAMP_LINE_NUMBER).contains(":");
     }
 
@@ -198,7 +198,7 @@ public final class StripJaxbMojo extends AbstractMojo
         }
     }
 
-    private String getMatchingSentence()
+    private String getRelyingCommentText()
     {
         if (StringUtils.isNotBlank(relyingCommentText))
         {
