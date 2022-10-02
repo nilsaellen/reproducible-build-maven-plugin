@@ -113,7 +113,8 @@ public final class StripJaxbMojo extends AbstractMojo
             return;
         }
         final Charset charset = Charset.forName(encoding);
-        final JaxbObjectFactoryFixer objectFactoryFixer = new JaxbObjectFactoryFixer(getMatchingCommentTexts(), charset);
+        final JaxbObjectFactoryFixer objectFactoryFixer = new JaxbObjectFactoryFixer(getMatchingCommentTexts(),
+                charset);
         final LineNumberStripper jaxbFileDateStripper = new LineNumberStripper(JAXB_FILE_TIMESTAMP_LINE_NUMBER);
         final LineNumberStripper jaxbEpisodeDateStripper = new LineNumberStripper(JAXB_EPISODE_TIMESTAMP_LINE_NUMBER);
         final File tmpFile = createTempFile();
