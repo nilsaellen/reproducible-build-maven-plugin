@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.util.Collections;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -39,7 +40,8 @@ public class JaxbObjectFactoryFixerTest
         out.deleteOnExit();
 
         final JaxbObjectFactoryFixer fixer = new JaxbObjectFactoryFixer(
-                StripJaxbMojo.XjcGenerator.COM_SUN_XML_BIND.getRelyingCommentText(), StandardCharsets.UTF_8);
+                Collections.singletonList(StripJaxbMojo.XjcGenerator.COM_SUN_XML_BIND.getRelyingCommentText()),
+                StandardCharsets.UTF_8);
         fixer.strip(in, out);
 
         final byte[] expected = Files.readAllBytes(new File(
@@ -62,7 +64,8 @@ public class JaxbObjectFactoryFixerTest
         out.deleteOnExit();
 
         final JaxbObjectFactoryFixer fixer = new JaxbObjectFactoryFixer(
-                StripJaxbMojo.XjcGenerator.ORG_GLASSFISH_JAXB.getRelyingCommentText(), StandardCharsets.UTF_8);
+                Collections.singletonList(StripJaxbMojo.XjcGenerator.ORG_GLASSFISH_JAXB.getRelyingCommentText()),
+                StandardCharsets.UTF_8);
         fixer.strip(in, out);
 
         final byte[] expected = Files.readAllBytes(new File(
@@ -85,7 +88,8 @@ public class JaxbObjectFactoryFixerTest
         out.deleteOnExit();
 
         final JaxbObjectFactoryFixer fixer = new JaxbObjectFactoryFixer(
-                StripJaxbMojo.XjcGenerator.COM_SUN_XML_BIND.getRelyingCommentText(), StandardCharsets.UTF_8);
+                Collections.singletonList(StripJaxbMojo.XjcGenerator.COM_SUN_XML_BIND.getRelyingCommentText()),
+                StandardCharsets.UTF_8);
         fixer.strip(in, out);
 
         final byte[] expected = Files.readAllBytes(new File(
