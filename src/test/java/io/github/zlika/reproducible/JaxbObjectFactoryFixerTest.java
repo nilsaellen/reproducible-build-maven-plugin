@@ -40,7 +40,7 @@ public class JaxbObjectFactoryFixerTest
         out.deleteOnExit();
 
         final JaxbObjectFactoryFixer fixer = new JaxbObjectFactoryFixer(
-                Collections.singletonList(StripJaxbMojo.XjcGenerator.COM_SUN_XML_BIND.getRelyingCommentText()),
+                Collections.singletonList(StripJaxbMojo.XjcGenerator.COM_SUN_XML_BIND.getMatchingCommentText()),
                 StandardCharsets.UTF_8);
         fixer.strip(in, out);
 
@@ -64,7 +64,7 @@ public class JaxbObjectFactoryFixerTest
         out.deleteOnExit();
 
         final JaxbObjectFactoryFixer fixer = new JaxbObjectFactoryFixer(
-                Collections.singletonList(StripJaxbMojo.XjcGenerator.ORG_GLASSFISH_JAXB.getRelyingCommentText()),
+                Collections.singletonList(StripJaxbMojo.XjcGenerator.ORG_GLASSFISH_JAXB.getMatchingCommentText()),
                 StandardCharsets.UTF_8);
         fixer.strip(in, out);
 
@@ -88,7 +88,7 @@ public class JaxbObjectFactoryFixerTest
         out.deleteOnExit();
 
         final JaxbObjectFactoryFixer fixer = new JaxbObjectFactoryFixer(
-                Collections.singletonList(StripJaxbMojo.XjcGenerator.COM_SUN_XML_BIND.getRelyingCommentText()),
+                Collections.singletonList(StripJaxbMojo.XjcGenerator.COM_SUN_XML_BIND.getMatchingCommentText()),
                 StandardCharsets.UTF_8);
         fixer.strip(in, out);
 
