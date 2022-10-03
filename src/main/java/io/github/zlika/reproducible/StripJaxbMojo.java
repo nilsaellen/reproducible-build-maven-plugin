@@ -44,6 +44,34 @@ public final class StripJaxbMojo extends AbstractMojo
     private static final int JAXB_EPISODE_TIMESTAMP_LINE_NUMBER = 7;
 
     /**
+     * Defines the supported XJC implementations.
+     */
+    enum XjcGenerator
+    {
+        /**
+         * Sun implmentation of XJC, used for example in mojohaus jaxb2-maven-plugin.
+         */
+        COM_SUN_XML_BIND("JavaTM Architecture for XML Binding (JAXB)"),
+
+        /**
+         * Glassfish implementation of XJC, used for example in jvnet maven-jaxb2-plugin.
+         */
+        ORG_GLASSFISH_JAXB("Eclipse Implementation of JAXB");
+
+        private final String matchingCommentText;
+
+        XjcGenerator(String matchingCommentText)
+        {
+            this.matchingCommentText = matchingCommentText;
+        }
+
+        public String getMatchingCommentText()
+        {
+            return matchingCommentText;
+        }
+    }
+
+    /**
      * The file encoding to use when reading the source files.
      * If the property project.build.sourceEncoding is not set,
      * the platform default encoding is used.
@@ -211,33 +239,5 @@ public final class StripJaxbMojo extends AbstractMojo
         }
 
         return matchingCommentTexts;
-    }
-
-    /**
-     * Defines the supported XJC implementations.
-     */
-    enum XjcGenerator
-    {
-        /**
-         * Sun implmentation of XJC, used for example in mojohaus jaxb2-maven-plugin.
-         */
-        COM_SUN_XML_BIND("JavaTM Architecture for XML Binding (JAXB)"),
-
-        /**
-         * Glassfish implementation of XJC, used for example in jvnet maven-jaxb2-plugin.
-         */
-        ORG_GLASSFISH_JAXB("Eclipse Implementation of JAXB");
-
-        private final String matchingCommentText;
-
-        XjcGenerator(String matchingCommentText)
-        {
-            this.matchingCommentText = matchingCommentText;
-        }
-
-        public String getMatchingCommentText()
-        {
-            return matchingCommentText;
-        }
     }
 }

@@ -59,8 +59,8 @@ public class JaxbObjectFactoryFixerTest
     @Test
     public void testObjectFactoryEclipseFixer() throws IOException
     {
-        final File in = new File(this.getClass().getResource("ObjectFactoryEclipse.java").getFile());
-        final File out = File.createTempFile("ObjectFactoryEclipse", null);
+        final File in = new File(this.getClass().getResource("ObjectFactory-glassfish.java").getFile());
+        final File out = File.createTempFile("ObjectFactory-glassfish", null);
         out.deleteOnExit();
 
         final JaxbObjectFactoryFixer fixer = new JaxbObjectFactoryFixer(
@@ -69,7 +69,7 @@ public class JaxbObjectFactoryFixerTest
         fixer.strip(in, out);
 
         final byte[] expected = Files.readAllBytes(new File(
-                this.getClass().getResource("ObjectFactoryEclipse-fixed.java").getFile()).toPath());
+                this.getClass().getResource("ObjectFactory-glassfish-fixed.java").getFile()).toPath());
         final byte[] actual = Files.readAllBytes(out.toPath());
         Assert.assertArrayEquals(expected, actual);
         out.delete();
