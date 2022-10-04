@@ -19,7 +19,7 @@ jobs:
         server-password: MAVEN_PASSWORD
 
     - name: Publish to OSS with maven
-      run: mvn --batch-mode clean deploy -Dgpg.passphrase="${{ secrets.CI_GPG_PASSPHRASE }}" -Psonatype-oss-release
+      run: mvn --batch-mode clean deploy "-Dgpg.passphrase=${{ secrets.CI_GPG_PASSPHRASE }}" -Psonatype-oss-release
       env:
         MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
