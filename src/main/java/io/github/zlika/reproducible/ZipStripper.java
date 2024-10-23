@@ -135,14 +135,8 @@ public final class ZipStripper implements Stripper
                 // Strip Zip entry
                 final ZipArchiveEntry strippedEntry = filterZipEntry(entry);
                 // Fix external file attributes if required
-                if (in.getName().endsWith(".jar") || in.getName().endsWith(".war"))
-                {
-                    fixAttributes(strippedEntry);
-                }
-                else if (in.getName().endsWith(".zip"))
-                {
-                    fixStickyAttributes(strippedEntry);
-                }
+                fixAttributes(strippedEntry);
+                fixStickyAttributes(strippedEntry);
                 // Strip file if required
                 final Stripper stripper = getSubFilter(name);
                 if (stripper != null)
