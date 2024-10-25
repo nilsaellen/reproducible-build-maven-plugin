@@ -3,7 +3,7 @@
 
 	<groupId>ch.galinet</groupId>
 	<artifactId>reproducible-build-maven-plugin</artifactId>
-	<version>0.16.1</version>
+	<version>0.17.0</version>
 	<packaging>maven-plugin</packaging>
 
 	<name>Reproducible Build Maven Plugin</name>

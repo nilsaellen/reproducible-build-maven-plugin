@@ -79,7 +79,7 @@ public final class StripJarMojo extends AbstractMojo
      * If enabled, the ZIP external file attributes will be forced to rw-r--r for files and rwxr-xr-x for folders.
      * This parameter only applies to JAR/WAR files.
      */
-    @Parameter(defaultValue = "false", property = "reproducible.fixZipExternalFileAttributes")
+    @Parameter(defaultValue = "true", property = "reproducible.fixZipExternalFileAttributes")
     private boolean fixZipExternalFileAttributes;
 
     /**
